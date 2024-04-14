@@ -1,0 +1,35 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Products</h1>
+<div class="spreadsheet">
+    <div>
+        <p>Name</p>
+
+    </div>
+    <div>
+        <p>Price</p>
+
+    </div>
+    <div>
+        
+        <p>Quantity</ p>
+    </div>
+</div>
+
+{% for product in products %}
+<div class="spreadsheet">
+    <div>
+        <p class="names">{{ product.name }}</p>
+    </div> 
+    <div>
+        <p class="info">{{ product.price }}</p>
+    </div>
+    <div>
+        <p class="info">{{ product.quantity }}</p>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

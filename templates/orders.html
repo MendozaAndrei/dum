@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Orders</h1>
+{% for order in orders %}
+<div id="ord_container">
+    {% set class_name = "pending" %}
+    {% if order.processed %}
+        {% set class_name = "processed" %}
+    {% endif %}
+    <div class="{{ class_name }}" id="ord_info">
+        <p>Order ID: {{ order.id }}</p>
+        <p>Customer Name: {{ order.customer.name }}</p>
+        <p>Created: {{ order.created }}</p>
+        <p>Total: {{ order.total }}</p>
+        <p>
+            {% for item in order.product_orders %}
+                {{ item.product_ref.name }}: {{ item.quantity }}<br>
+            {% endfor %}
+        </p>
+        <p>Processed: {{ class_name }}</p>
+    </div>
+
+    <div id="ord_buttons">
+        <a href="/orders/{{ order.id }}">Edit Order</a>
+    </div>
+
+</div>
+
+
+
+
+
+
+{% endfor %}
+{% endblock %}

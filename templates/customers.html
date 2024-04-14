@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Customers</h1>
+<div style="display: flex; justify-content: space-around;">
+    <h3>Name</h3>
+    <h3>Phone Number</h3>
+    <h3>Balance</h3>
+
+
+</div>
+{% for customer in customers %}
+<div class="spreadsheet"> 
+    <div>
+        <div>
+             
+            <a href="{{url_for('customer_detail', customer_id=customer.id)}}">{{ customer.name }}</a>
+        </div> 
+        <div>
+            <p class="info">{{ customer.phone }}</p> 
+        </div>
+        <div>
+            <p class="info">{{ customer.balance }}</p> 
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}  
